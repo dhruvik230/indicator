@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char *ptr;
+    int length = 0;
+
+    // Input string
+    printf("Enter any string: ");
+    fgets(str, sizeof(str), stdin);  // safer than scanf for full line input
+
+    ptr = str;  // pointer points to start of string
+
+    // Loop until null character is reached
+    while (*ptr != '\0') {
+        if (*ptr != '\n')  // Ignore newline character from fgets
+            length++;
+        ptr++;
+    }
+
+    // Output length
+    printf("The length of the string is: %d\n", length);
+
+    return 0;
+}

@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Function to calculate cube using pointer
+void generateCubes(int *arr, int rows, int cols) {
+    int i, j;
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
+            // Calculate index in 1D format for pointer
+            int val = *(arr + i * cols + j);
+            printf("%d ", val * val * val); // cube of the element
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int arr[10][10];  // Maximum size
+    int rows, cols, i, j;
+
+    // Input size
+    printf("Enter array's row size: ");
+    scanf("%d", &rows);
+    printf("Enter array's column size: ");
+    scanf("%d", &cols);
+
+    // Input elements
+    printf("Enter array elements:\n");
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
+            printf("a[%d][%d] = ", i, j);
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    // Output cubes
+    printf("\nCubes of all elements:\n");
+    generateCubes(&arr[0][0], rows, cols); // Pass base address to function
+
+    return 0;
+}
